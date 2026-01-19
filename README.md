@@ -1,13 +1,13 @@
 # TRUST: Leveraging Text Robustness for Unsupervised Domain Adaptation (AAAI 2026)
 
-This is the official implementation of the AAAI 2026 paper "TRUST: Leveraging Text Robustness for Unsupervised Domain Adaptation" - Mattia Litrico, Alessio Del Bue, Pietro Morerio.
+This is the official implementation of the AAAI 2026 paper "TRUST: Leveraging Text Robustness for Unsupervised Domain Adaptation" - Mattia Litrico, Mario Valerio Giuffrida, Sebastiano Battiato, Devis Tuia.
 
-[Paper](https://arxiv.org/abs/XXXX.XXXXX)
+[Paper](https://arxiv.org/pdf/2508.06452)
 
 ```
 @inproceedings{litrico_2026_AAAI,
   title={TRUST: Leveraging Text Robustness for Unsupervised Domain Adaptation},
-  author={Litrico, Mattia and Del Bue, Alessio and Morerio, Pietro},
+  author={Litrico, Mattia and Giuffrida, Mario Valerio and Battiato, Sebastiano and and Tuia, Devis},
   booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
   year={2026}
 }
@@ -87,27 +87,6 @@ python train.py \
     --run_name geoplaces_trust
 ```
 
-If you want to change the default `${DATA_ROOT}`, please use the following:
-
-```bash
-# Step 1: Fine-tune BERT on source domain
-python finetune_bert.py \
-    --root_dir <DATA_ROOT>/GeoNet/GeoPlaces \
-    --metadata_file metadata.json \
-    --source_domain usa \
-    --target_domain asia \
-    --run_name geoplaces_finetune_bert
-
-# Step 2: Train TRUST
-python train.py \
-    --root_dir <DATA_ROOT>/GeoNet/GeoPlaces \
-    --metadata_file metadata.json \
-    --source_domain usa \
-    --target_domain asia \
-    --num_classes 205 \
-    --run_name geoplaces_trust
-```
-
 This will reproduce Table 2 from the main paper:
 
 <!-- TODO: Add GeoNet results table image -->
@@ -143,27 +122,6 @@ python train.py \
     --num_classes 345 \
     --num_epochs 30 \
     --batch_size 32 \
-    --run_name domainnet_trust
-```
-
-If you want to change the default `${DATA_ROOT}`, please use the following:
-
-```bash
-# Step 1: Fine-tune BERT on source domain
-python finetune_bert.py \
-    --root_dir <DATA_ROOT>/DomainNet \
-    --metadata_file metadata.json \
-    --source_domain <SOURCE_DOMAIN> \
-    --target_domain <TARGET_DOMAIN> \
-    --run_name domainnet_finetune_bert
-
-# Step 2: Train TRUST
-python train.py \
-    --root_dir <DATA_ROOT>/DomainNet \
-    --metadata_file metadata.json \
-    --source_domain <SOURCE_DOMAIN> \
-    --target_domain <TARGET_DOMAIN> \
-    --num_classes 345 \
     --run_name domainnet_trust
 ```
 
